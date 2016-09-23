@@ -1,0 +1,46 @@
+.item{
+    background-color: #293846;
+}
+.level-one{
+    height: 32px;
+    padding: 8px 12px 8px 18px;
+    line-height: 32px;
+    font-size: 15px;
+    position: relative;
+    cursor: pointer;
+    background-color: #2F4050;
+    color: #bbc0c4;
+}
+.level-one:hover{
+    /*background-color: #293846;*/
+    color: #ffffff;
+    text-decoration: none;
+    border-left: 4px solid #19A98C;
+}
+.level-one>i{
+    position: absolute;
+    right: 12px;
+    top: 13px;
+    font-size: 20px
+}
+.level-one>span{
+    font-size: 15px
+}
+.menu-list{
+    padding: 12px 12px 12px 50px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #bbc0c4;
+    background-color: #293846;
+}
+.menu-list>a{
+    color: #bbc0c4;
+}
+.menu-list>a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+.menu-list>a:focus{
+    color: #fffff;
+    text-decoration: none;
+}

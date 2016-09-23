@@ -1,0 +1,318 @@
+{% extends 'Oas/index.html' %}
+{% block head %}
+    <link href="/static/Oas/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+    <link href="/static/Oas/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/Oas/js/data-tables/DT_bootstrap.css" />
+
+    <link href="/static/Oas/css/style.css" rel="stylesheet">
+    <link href="/static/Oas/css/style-responsive.css" rel="stylesheet">
+    <style>
+     .modal-dialog {
+            margin: 200px auto;
+        }
+    </style>
+{% endblock %}
+
+{% block page-left %}
+        <div class="left-side-inner">
+            <!--sidebar nav start-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li><a href="/"><i class="fa fa-home"></i> <span>首页</span></a></li>
+                <li class="menu-list nav-active"><a href="/Hmt/task-result/"><i class="fa fa-laptop"></i> <span>主机管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="active"><a href="/Hmt/task/"> 批量任务</a></li>
+                        <li><a href="/Hmt/script/"> 编写脚本</a></li>
+                        <li><a href="/Hmt/group/"> 主机组管理</a></li>
+
+                    </ul>
+                </li>
+{#                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>CMDB</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="general.html"> General</a></li>#}
+{#                        <li><a href="buttons.html"> Buttons</a></li>#}
+{#                        <li><a href="tabs-accordions.html"> Tabs & Accordions</a></li>#}
+{#                        <li><a href="typography.html"> Typography</a></li>#}
+{#                        <li><a href="slider.html"> Slider</a></li>#}
+{#                        <li><a href="panels.html"> Panels</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>监控</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="grids.html"> Grids</a></li>#}
+{#                        <li><a href="gallery.html"> Media Gallery</a></li>#}
+{#                        <li><a href="calendar.html"> Calendar</a></li>#}
+{#                        <li><a href="tree_view.html"> Tree View</a></li>#}
+{#                        <li><a href="nestable.html"> Nestable</a></li>#}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href=""><i class="fa fa-envelope"></i> <span>日志管理</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="mail.html"> Inbox</a></li>#}
+{#                        <li><a href="mail_compose.html"> Compose Mail</a></li>#}
+{#                        <li><a href="mail_view.html"> View Mail</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="menu-list"><a href=""><i class="fa fa-tasks"></i> <span>负载均衡</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="form_layouts.html"> Form Layouts</a></li>#}
+{#                        <li><a href="form_advanced_components.html"> Advanced Components</a></li>#}
+{#                        <li><a href="form_wizard.html"> Form Wizards</a></li>#}
+{#                        <li><a href="form_validation.html"> Form Validation</a></li>#}
+{#                        <li><a href="editors.html"> Editors</a></li>#}
+{#                        <li><a href="inline_editors.html"> Inline Editors</a></li>#}
+{#                        <li><a href="pickers.html"> Pickers</a></li>#}
+{#                        <li><a href="dropzone.html"> Dropzone</a></li>#}
+{#                        <li><a href="http://www.weidea.net"> More</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href=""><i class="fa fa-bar-chart-o"></i> <span>上线发布</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="flot_chart.html"> Flot Charts</a></li>#}
+{#                        <li><a href="morris.html"> Morris Charts</a></li>#}
+{#                        <li><a href="chartjs.html"> Chartjs</a></li>#}
+{#                        <li><a href="c3chart.html"> C3 Charts</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href="#"><i class="fa fa-th-list"></i> <span>用户管理</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="basic_table.html"> Basic Table</a></li>#}
+{#                        <li><a href="dynamic_table.html"> Advanced Table</a></li>#}
+{#                        <li><a href="responsive_table.html"> Responsive Table</a></li>#}
+{#                        <li><a href="editable_table.html"> Edit Table</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="menu-list"><a href="#"><i class="fa fa-map-marker"></i> <span>DNS</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="google_map.html"> Google Map</a></li>#}
+{#                        <li><a href="vector_map.html"> Vector Map</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+            </ul>
+            <!--sidebar nav end-->
+
+        </div>
+        {%  endblock %}
+{% block page-content %}
+        <div class="page-heading">
+            <h3>
+                主机管理
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/Hmt/task/">主机管理</a>
+                </li>
+                <li class="active"> 批量任务</li>
+            </ul>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content" style="width: 700px">
+              <div class="modal-header" style="background-color: steelblue;height: 40px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+              </div>
+{#              <div class="modal-body">#}
+                  <textarea class="form-control modal-body" rows="18" readonly="readonly" id="ModalContent" style="background-color: #49586e;color: #b9dff1;resize:none;cursor:text">
+                  </textarea>
+{#              </div>#}
+{#              <div class="modal-footer" style="background-color: #0c9076">#}
+{#                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>#}
+{#              </div>#}
+            </div>
+          </div>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+                <div class="wrapper">
+{#        <div class="row">#}
+{#        <div class="col-sm-12">#}
+        <section class="panel">
+            <div id="task_result">
+{#                <h2  style="background-color: darkgoldenrod;color: #e1edf7">任务正在进行中，请稍后...</h2>#}
+            </div>
+        <header class="panel-heading">
+            批量任务编号：{{ task_id }}
+            <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+        </header>
+        <div class="panel-body">
+        <div class="adv-table">
+        <table  class="display table table-bordered table-striped" id="dynamic-table">
+        <thead>
+        <tr>
+            <th>服务器IP</th>
+            <th>执行状态</th>
+            <th>返回信息</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </section>
+        </div>
+{#        </div>#}
+{#        </div>#}
+{%  endblock %}
+{% block bottom-js %}
+    <!--dynamic table-->
+    <script type="text/javascript" language="javascript" src="/static/Oas/js/advanced-datatable/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/static/Oas/js/data-tables/DT_bootstrap.js"></script>
+    <!--dynamic table initialization -->
+    <script src="/static/Oas/js/dynamic_table_init.js"></script>
+    <script>
+        $(document).ready(function() {
+            flag = 0
+            intervalId = setInterval(fetch_task,2000);
+        });
+        function fetch_task(){
+            $.getJSON("/Hmt/task_detail?task_id=" + {{ task_id }} + "&flag=" + flag,function(arg){
+                var callback_dic = arg;
+                console.log(callback_dic);
+                var task_code = callback_dic.code;
+                console.log(task_code);
+                var suc_ips = callback_dic.suc_ips;
+                console.log(typeof(suc_ips),1234);
+                var timeout_ips = callback_dic.timeout_ips;
+                console.log(timeout_ips,3456);
+                for (var suc_ip in suc_ips) {
+                    console.log(suc_ip,999999)
+                    if (suc_ips[suc_ip] == 0) {
+                        var new_ele1 = '<tr class="gradeA">' +
+                                '<td>' + suc_ip + '</td>' +
+                                '<td style="color: green">执行成功</td>' +
+{#                                '<td><img src="/static/Oas/images/details_open.png"></td>' +#}
+{#                                '<td><button type="button" class="btn-primary text-center" data-toggle="modal" data-target="#myModal" style="width: 95px;height: 25px">详细信息</button></td>' +#}
+                                 '<td><img src="/static/Oas/images/details_open.png" data-toggle="modal" data-target="#myModal" style="cursor:pointer;" onclick="callback_info(this)"></td>' +
+                                '</tr>';
+                        $('#tbody').append(new_ele1);
+                    }
+                    if (suc_ips[suc_ip] == 1) {
+                        var new_ele1 = '<tr class="gradeA">' +
+                                '<td>' + suc_ip + '</td>' +
+                                '<td style="color: red">执行报错</td>' +
+                                '<td><img src="/static/Oas/images/details_open.png" data-toggle="modal" data-target="#myModal" style="cursor:pointer;" onclick="callback_info(this)"></td>' +
+                                '</tr>';
+                        $('#tbody').append(new_ele1);
+                    }
+                    if (suc_ips[suc_ip] == 2) {
+                        var new_ele1 = '<tr class="gradeA">' +
+                                '<td>' + suc_ip + '</td>' +
+                                '<td style="color: red">执行超时</td>' +
+                                '<td> —</td>' +
+                                '</tr>';
+                        $('#tbody').append(new_ele1);
+                    }
+                    if (suc_ips['suc_ip'] == 3) {
+                        var new_ele1 = '<tr class="gradeA">' +
+                                '<td>' + suc_ip + '</td>' +
+                                '<td style="color: red">脚本未成功下载</td>' +
+                                '<td><img src="/static/Oas/images/details_open.png"></td>' +
+                                '</tr>';
+                        $('#tbody').append(new_ele1);
+                    }
+                }
+                for (var timeout_ip in timeout_ips) {
+                    var new_ele2 = '<tr class="gradeA">' +
+                            '<td>' + timeout_ips[timeout_ip] + '</td>' +
+                            '<td style="color: red">连接超时</td>' +
+                            '<td>—</td>' +
+                            '</tr>';
+                    $('#tbody').append(new_ele2);
+                }
+                if (task_code == 0){
+                    $('#dynamic-table').dataTable( {
+                        "aaSorting": [[ 4, "desc" ]]
+                    } );
+                    $('#task_result').html('<h2  style="background-color: #0c9076;color: #b9dff1">任务执行完成！</h2>');
+                    clearInterval(intervalId);
+                }else if (task_code == 2){
+                    $('#task_result').html('<h2  style="background-color: #d43f3a;color:lavenderblush">任务编号不存在！</h2>');
+                    clearInterval(intervalId);
+                } else{
+                    $('#task_result').html('<h2  style="background-color: darkgoldenrod;color: #e1edf7">任务正在进行中，请稍后...</h2>');
+                }
+            });
+            flag++
+        }
+        function GetTaskInfo(){
+            alert(flag)
+             $('#dynamic-table').dataTable( {
+                "aaSorting": [[0,"desc"]]
+            } );
+            var new_ele =   '<tr class="gradeA">' +
+                                '<td>1</td>' +
+                                '<td>2</td>' +
+                                '<td>3</td>'+
+                                '<td class="center hidden-phone">-</td>' +
+                                '<td class="center hidden-phone">A</td>' +
+                             '</tr>'
+            $('#tbody').append(new_ele)
+            $('#dynamic-table').dataTable( {
+                "aaSorting": [[ 4, "desc" ]]
+            } );
+        }
+        function callback_info(arg) {
+            var title_ip = $(arg).parent().prev().prev().text()
+            $('#myModalLabel').text(title_ip)
+            $.ajax({
+                url: "/Hmt/callback_info/",
+                type: "post",
+                traditional: true,
+                data: {
+                    task_id:{{ task_id }},
+                    client_ip:title_ip
+                },
+                success: function (callback) {
+                    $('#ModalContent').text(callback)
+                }
+            });
+        }
+    $(document).ajaxSend(function(event, xhr, settings) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            function sameOrigin(url) {
+                // url could be relative or scheme relative or absolute
+                var host = document.location.host; // host + port
+                var protocol = document.location.protocol;
+                var sr_origin = '//' + host;
+                var origin = protocol + sr_origin;
+                // Allow absolute or scheme relative URLs to same origin
+                return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                    (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                    // or any other URL that isn't scheme relative or absolute i.e relative.
+                    !(/^(\/\/|http:|https:).*/.test(url));
+            }
+            function safeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        });
+    </script>
+    <!--common scripts for all pages-->
+{#    <script src="/static/Oas/js/scripts.js"></script>#}
+{%  endblock %}

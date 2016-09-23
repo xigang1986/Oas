@@ -1,0 +1,262 @@
+{% extends 'Oas/index.html' %}
+{% block page-left %}
+        <div class="left-side-inner">
+            <!--sidebar nav start-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li><a href="/"><i class="fa fa-home"></i> <span>首页</span></a></li>
+                <li class="menu-list nav-active"><a href=""><i class="fa fa-laptop"></i> <span>主机管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="active"><a href="/Hmt/task/"> 批量任务</a></li>
+                        <li><a href="/Hmt/script/"> 编写脚本</a></li>
+                        <li><a href="/Hmt/group/"> 主机组管理</a></li>
+
+                    </ul>
+                </li>
+{#                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>CMDB</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="general.html"> General</a></li>#}
+{#                        <li><a href="buttons.html"> Buttons</a></li>#}
+{#                        <li><a href="tabs-accordions.html"> Tabs & Accordions</a></li>#}
+{#                        <li><a href="typography.html"> Typography</a></li>#}
+{#                        <li><a href="slider.html"> Slider</a></li>#}
+{#                        <li><a href="panels.html"> Panels</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>监控</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="grids.html"> Grids</a></li>#}
+{#                        <li><a href="gallery.html"> Media Gallery</a></li>#}
+{#                        <li><a href="calendar.html"> Calendar</a></li>#}
+{#                        <li><a href="tree_view.html"> Tree View</a></li>#}
+{#                        <li><a href="nestable.html"> Nestable</a></li>#}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href=""><i class="fa fa-envelope"></i> <span>日志管理</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="mail.html"> Inbox</a></li>#}
+{#                        <li><a href="mail_compose.html"> Compose Mail</a></li>#}
+{#                        <li><a href="mail_view.html"> View Mail</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="menu-list"><a href=""><i class="fa fa-tasks"></i> <span>负载均衡</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="form_layouts.html"> Form Layouts</a></li>#}
+{#                        <li><a href="form_advanced_components.html"> Advanced Components</a></li>#}
+{#                        <li><a href="form_wizard.html"> Form Wizards</a></li>#}
+{#                        <li><a href="form_validation.html"> Form Validation</a></li>#}
+{#                        <li><a href="editors.html"> Editors</a></li>#}
+{#                        <li><a href="inline_editors.html"> Inline Editors</a></li>#}
+{#                        <li><a href="pickers.html"> Pickers</a></li>#}
+{#                        <li><a href="dropzone.html"> Dropzone</a></li>#}
+{#                        <li><a href="http://www.weidea.net"> More</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href=""><i class="fa fa-bar-chart-o"></i> <span>上线发布</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="flot_chart.html"> Flot Charts</a></li>#}
+{#                        <li><a href="morris.html"> Morris Charts</a></li>#}
+{#                        <li><a href="chartjs.html"> Chartjs</a></li>#}
+{#                        <li><a href="c3chart.html"> C3 Charts</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="menu-list"><a href="#"><i class="fa fa-th-list"></i> <span>用户管理</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="basic_table.html"> Basic Table</a></li>#}
+{#                        <li><a href="dynamic_table.html"> Advanced Table</a></li>#}
+{#                        <li><a href="responsive_table.html"> Responsive Table</a></li>#}
+{#                        <li><a href="editable_table.html"> Edit Table</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{#                <li class="menu-list"><a href="#"><i class="fa fa-map-marker"></i> <span>DNS</span></a>#}
+{#                    <ul class="sub-menu-list">#}
+{#                        <li><a href="google_map.html"> Google Map</a></li>#}
+{#                        <li><a href="vector_map.html"> Vector Map</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+            </ul>
+            <!--sidebar nav end-->
+
+        </div>
+        {%  endblock %}
+{% block page-content %}
+        <div class="page-heading">
+            <h3>
+                主机管理
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/Hmt/task/">主机管理</a>
+                </li>
+                <li class="active"> 批量任务</li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+             <section class="panel">
+                <header class="panel-heading">
+                    批量执行任务
+                </header>
+                <div class="panel-body" id="main">
+                <div class="form-horizontal adminex-form">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">脚本名称：</label>
+                        <div class="col-sm-10">
+                           <span style="color:red;display: inline-block;">*</span><input class="form-control" id="scripte_name" type="text" value="" onclick="input1()" onselect="input1()" onkeydown="if(event.keyCode==9) return input2()">
+                            <div id="scripte_error"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ip列表：</label>
+                        <div class="col-sm-10">
+                            <span style="color:red;display: inline-block;">*</span><textarea rows="6" class="form-control" id="ip_list" onclick="input2()" onselect="input2()"></textarea>
+                            <div id="ips_error"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">备注：</label>
+                        <div class="col-sm-10">
+                            <textarea rows="6" class="form-control" id="task_demo"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <div id="post_error"></div>
+                            <button class="btn btn-primary" type="submit" onclick="submit1();">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+             </section>
+        </div>
+{%  endblock %}
+{% block bottom-js %}
+    <script>
+        function submit1(){
+            var inp1 = $("#scripte_name").val();
+            var inp2 = $("#ip_list").val();
+            var inp3 = $("#task_demo").val();
+            if ($.trim(inp1).length == 0 ) {
+                $("#scripte_error").html('<label style="color: red">Please enter script name !</label>');
+{#                return false;#}
+            }
+            if ($.trim(inp2).length == 0) {
+                $("#ips_error").html('<label style="color: red">Please enter ip list !</label>');
+{#                return false;#}
+            }
+             if ($.trim(inp1).length != 0 && $.trim(inp2).length != 0 ){
+                  $.ajax({
+                    url: "/Hmt/task/",
+                    type: "post",
+                    traditional:true,
+                    data: {scripte_name: $.trim(inp1), ip_list: inp2,task_demo:inp3,user_id:"{{ request.user.userprofile.id }}"},
+                    success:function(arg){
+                        callback_dic = JSON.parse(arg);
+                        if(callback_dic.code == 1){
+                            $("#post_error").html('<label style="color: red">'+ callback_dic.info +'</label>');
+{#                            window.location.href='/';#}
+                        }else{
+{#                            var aaa = "{{ request.user.userprofile.id }}";#}
+{#                            alert("任务发送成功，此次任务编号为："+callback_dic.info);#}
+                            window.location.href="/Hmt/task_result?task_id="+callback_dic.info;
+{#                            $("#main").html('<label style="color: red">'+ callback_dic.info +'</label>');#}
+                        }
+
+                    }
+                  })
+             }
+        }
+        function input1(){
+            $("#scripte_error").html('');
+            $("#post_error").html('');
+        }
+        function input2(){
+            $("#ips_error").html('');
+            $("#post_error").html('');
+        }
+        $(document).ajaxSend(function(event, xhr, settings) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            function sameOrigin(url) {
+                // url could be relative or scheme relative or absolute
+                var host = document.location.host; // host + port
+                var protocol = document.location.protocol;
+                var sr_origin = '//' + host;
+                var origin = protocol + sr_origin;
+                // Allow absolute or scheme relative URLs to same origin
+                return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                    (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                    // or any other URL that isn't scheme relative or absolute i.e relative.
+                    !(/^(\/\/|http:|https:).*/.test(url));
+            }
+            function safeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        });
+
+    </script>
+{%  endblock %}
+{#{% block bottom-js %}#}
+{#<script>#}
+{#    function  GetComments(){#}
+{#        if ($('.comment-list').html().length>0){#}
+{#            $('.comment-list').empty();#}
+{#        }#}
+{#        else{#}
+{#            $.get("{% url 'get_comments' article_obj.id %}",function(callback){#}
+{#                console.log(callback)#}
+{#                $('.comment-list').html(callback)#}
+{#            })#}
+{#        }#}
+{#    }#}
+{#    function getCsrf(){#}
+{#        return $("input[name='csrfmiddlewaretoken']").val();#}
+{#    }#}
+{#    $(document).ready(function(){#}
+{#        $(".comment-box button").click(function(){#}
+{#            var comment_text = $(".comment-box textarea").val();#}
+{#            if (comment_text.trim().length <5){#}
+{#                alert("评论不能少于5个字sb");#}
+{#            }else{#}
+{#                //post#}
+{##}
+{#                $.post("{% url 'post_comment' %}",#}
+{#                        {#}
+{#                            'comment_type':1,#}
+{#                            article_id:"{{ article_obj.id }}",#}
+{#                            parent_comment_id:null,#}
+{#                            'comment':comment_text.trim(),#}
+{#                            'csrfmiddlewaretoken':getCsrf()#}
+{#                        },//end post args#}
+{#                        function(callback){#}
+{#                            console.log(callback);#}
+{#                            if (callback == 'post-comment-success'){#}
+{#                                alert('post-comment-success')#}
+{#                            }#}
+{#                })//end post#}
+{#            }#}
+{#        });//end button click#}
+{#    });#}
+{#</script>#}
+{#{% endblock %}#}
